@@ -8,6 +8,12 @@ Recommended repository name:
 inferflow-examples
 ```
 
+Published repository:
+
+```text
+https://github.com/luresun1988-bot/inferflow-examples
+```
+
 ## One-time publish
 
 Create an empty GitHub repository, then run from this directory:
