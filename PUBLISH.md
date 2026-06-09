@@ -41,4 +41,31 @@ Add the public URL to:
 - `https://inferflow.dev/llms.txt`
 - Cursor, Dify, Open WebUI, Python, JavaScript, and LangChain SEO pages.
 
+## GitHub repository setup
+
+Set repository description:
+
+```text
+OpenAI-compatible API examples for Inferflow: DeepSeek, Doubao, Qwen, MiMo, Cursor, Dify, Open WebUI, Python, JavaScript, LangChain, and cURL.
+```
+
+Suggested GitHub topics:
+
+```text
+openai-compatible
+ai-api
+deepseek
+doubao
+qwen
+mimo
+cursor
+dify
+openwebui
+langchain
+python
+javascript
+curl
+llm
+```
+
 Do not include real API keys in commits.

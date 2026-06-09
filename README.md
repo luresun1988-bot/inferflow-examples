@@ -1,6 +1,20 @@
 # Inferflow Examples
 
-Runnable examples for the Inferflow OpenAI-compatible API.
+Runnable examples for the Inferflow OpenAI-compatible API, including DeepSeek, Doubao, Qwen, and MiMo model aliases for Cursor, Dify, Open WebUI, Python, JavaScript, LangChain, and cURL.
+
+Inferflow uses the same client pattern as OpenAI:
+
+```text
+base_url = https://api.inferflow.dev/v1
+authorization = Bearer <your Inferflow API key>
+```
+
+## What This Repository Covers
+
+- OpenAI-compatible chat completions.
+- China frontier model aliases such as DeepSeek V4, Doubao Seed, Qwen, and MiMo.
+- Setup examples for Cursor, Dify, Open WebUI, Python, JavaScript, LangChain, and cURL.
+- Common fixes for `401 Unauthorized`, `model_not_found`, `insufficient_balance`, and wrong base URL errors.
 
 ## Connection Values
 
@@ -68,6 +82,8 @@ python langchain/chat_openai.py
 - Python SDK: `python/openai_sdk.py`
 - JavaScript SDK: `javascript/openai_sdk.mjs`
 - LangChain: `langchain/chat_openai.py`
+- Model names: `docs/model-names.md`
+- Troubleshooting: `docs/troubleshooting.md`
 
 ## Model Names
 
@@ -91,6 +107,8 @@ doubao-seed-2.0-mini
 
 Use only model names visible in your Inferflow account.
 
+More aliases and selection notes: `docs/model-names.md`.
+
 ## Troubleshooting
 
 - `401 Unauthorized`: check `INFERFLOW_API_KEY` and the `Authorization: Bearer ...` header.
@@ -98,12 +116,15 @@ Use only model names visible in your Inferflow account.
 - `insufficient_balance`: open Billing, top up with Paddle, and retry after the balance updates.
 - Wrong base URL: use exactly `https://api.inferflow.dev/v1`.
 
+Full troubleshooting guide: `docs/troubleshooting.md`.
+
 ## Links
 
 - Docs: https://inferflow.dev/docs/
 - Examples page: https://inferflow.dev/examples/
 - Model catalog: https://inferflow.dev/models/
 - API Reference: https://inferflow.dev/docs/api-reference/
+- GitHub repository: https://github.com/luresun1988-bot/inferflow-examples
 
 ## Safety
 
