@@ -89,3 +89,75 @@ bash curl/chat-completions.sh
 
 Expected result: the response should include an assistant message.
 
+## Credential Test Works, Runtime Returns 404
+
+Some tools test credentials with one endpoint but run chat requests through another endpoint.
+
+Check whether the failing runtime call uses:
+
+```text
+/v1/chat/completions
+```
+
+and not:
+
+```text
+/v1/responses
+/api/chat/completions
+/v1/v1/chat/completions
+/v1/chat/completions/chat/completions
+```
+
+For Inferflow, configure only the base URL:
+
+```text
+https://api.inferflow.dev/v1
+```
+
+Let the OpenAI-compatible client append `/chat/completions`.
+
+## Cursor Sends Unsupported Tool or Composer Requests
+
+Cursor and similar AI coding tools may use tool-calling, edit actions, or internal model routes that are stricter than a plain chat completion.
+
+First verify plain chat:
+
+```bash
+curl https://api.inferflow.dev/v1/chat/completions \
+  -H "Authorization: Bearer $INFERFLOW_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"model":"deepseek-v4-flash","messages":[{"role":"user","content":"Reply exactly: OK"}]}'
+```
+
+If this works but Cursor fails, the issue is probably in Cursor's custom-provider behavior, plan restrictions, or unsupported tool-call parameters. Keep the first test simple before trying Composer, agent modes, or code-edit tools.
+
+## Reasoning Content or Thinking Mode Errors
+
+Some reasoning models expose provider-specific fields such as:
+
+```text
+reasoning_content
+reasoning
+thinking
+```
+
+If a tool drops or renames these fields, reasoning models may fail even though basic chat works. Test in this order:
+
+1. Non-streaming basic chat.
+2. Non-streaming reasoning model.
+3. Streaming reasoning model.
+4. Tool calling or agent mode.
+
+Inferflow's public examples focus on text/chat OpenAI-compatible usage. Do not assume image, audio, video, or every provider-specific reasoning extension is available in every client.
+
+## What to Include When Asking for Help
+
+Include these details so someone can reproduce the setup:
+
+```text
+Tool: Cursor / Dify / Open WebUI / LangChain / other
+Base URL: https://api.inferflow.dev/v1
+Model: deepseek-v4-flash
+Did the cURL test work? yes/no
+Exact error:
+```

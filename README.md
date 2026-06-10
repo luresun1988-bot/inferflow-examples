@@ -1,6 +1,6 @@
 # Inferflow Examples
 
-Runnable examples for the Inferflow OpenAI-compatible API, including DeepSeek, Doubao, Qwen, and MiMo model aliases for Cursor, Dify, Open WebUI, Python, JavaScript, LangChain, and cURL.
+Runnable examples for the Inferflow OpenAI-compatible API, including DeepSeek, Doubao, MiMo, and Qwen model aliases where enabled for Cursor, Dify, Open WebUI, Python, JavaScript, LangChain, and cURL.
 
 Inferflow uses the same client pattern as OpenAI:
 
@@ -12,7 +12,7 @@ authorization = Bearer <your Inferflow API key>
 ## What This Repository Covers
 
 - OpenAI-compatible chat completions.
-- China frontier model aliases such as DeepSeek V4, Doubao Seed, Qwen, and MiMo.
+- China frontier model aliases such as DeepSeek V4, Doubao Seed, MiMo, and Qwen where enabled.
 - Setup examples for Cursor, Dify, Open WebUI, Python, JavaScript, LangChain, and cURL.
 - Common fixes for `401 Unauthorized`, `model_not_found`, `insufficient_balance`, and wrong base URL errors.
 
@@ -25,7 +25,7 @@ Recommended model: deepseek-v4-flash
 Doubao quick test: doubao-seed-2.0-mini
 ```
 
-## 1-minute Quickstart
+## 3-minute Quickstart
 
 1. Create an account at https://api.inferflow.dev/sign-up.
 2. Create an API key in the dashboard.
@@ -47,6 +47,23 @@ export INFERFLOW_API_KEY="sk-your-key"
 ```bash
 bash curl/chat-completions.sh
 ```
+
+6. If the response says credit or balance is insufficient, open Billing in the Inferflow console, complete a Paddle top-up, and retry the same command.
+
+## Debug a Tool Setup
+
+If Cursor, Dify, Open WebUI, LangChain, or another client fails, test Inferflow outside that tool first:
+
+```bash
+curl https://api.inferflow.dev/v1/chat/completions \
+  -H "Authorization: Bearer $INFERFLOW_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"model":"deepseek-v4-flash","messages":[{"role":"user","content":"Reply exactly: Inferflow OK"}]}'
+```
+
+If cURL works, the API key, balance, model name, and Inferflow route are valid. The remaining issue is usually the tool's custom provider settings, unsupported parameters, or a client-specific route such as `/responses` instead of `/chat/completions`.
+
+If cURL fails, fix the API key, base URL, model name, or balance before debugging the tool.
 
 ## Python
 
@@ -115,8 +132,22 @@ More aliases and selection notes: `docs/model-names.md`.
 - `model_not_found`: use a model alias visible in your Inferflow Models page.
 - `insufficient_balance`: open Billing, top up with Paddle, and retry after the balance updates.
 - Wrong base URL: use exactly `https://api.inferflow.dev/v1`.
+- Credential test works but runtime returns 404: check whether the tool is calling `/responses` or appending a route to an already complete URL.
+- Cursor/Dify/Open WebUI setup is unclear: run the cURL test above first, then copy the same base URL and model name into the tool.
 
 Full troubleshooting guide: `docs/troubleshooting.md`.
+
+## Ask for Setup Help
+
+When opening a GitHub issue or asking in a community thread, include:
+
+```text
+Tool: Cursor / Dify / Open WebUI / LangChain / other
+Base URL used: https://api.inferflow.dev/v1
+Model used: deepseek-v4-flash
+Did the cURL test work? yes/no
+Exact error message:
+```
 
 ## Links
 
