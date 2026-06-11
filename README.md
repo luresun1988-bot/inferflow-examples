@@ -144,6 +144,9 @@ More aliases and selection notes: `docs/model-names.md`.
 
 Full troubleshooting guide: `docs/troubleshooting.md`.
 
+OpenAI-compatible setup checklist:
+https://inferflow.hashnode.dev/openai-compatible-api-setup-checklist-base-url-model-names-401-404-and-chat-completions
+
 ## Ask for Setup Help
 
 When opening a GitHub issue or asking in a community thread, include:
@@ -162,6 +165,7 @@ Exact error message:
 - Examples page: https://inferflow.dev/examples/
 - Model catalog: https://inferflow.dev/models/
 - API Reference: https://inferflow.dev/docs/api-reference/
+- OpenAI-compatible setup checklist: https://inferflow.hashnode.dev/openai-compatible-api-setup-checklist-base-url-model-names-401-404-and-chat-completions
 - GitHub repository: https://github.com/luresun1988-bot/inferflow-examples
 
 ## Safety
