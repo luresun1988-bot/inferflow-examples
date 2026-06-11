@@ -94,6 +94,7 @@ python langchain/chat_openai.py
 ## Guides
 
 - Cursor: `integrations/cursor.md`
+- Cursor with DeepSeek and Doubao: `integrations/cursor-deepseek-doubao.md`
 - Dify: `integrations/dify.md`
 - Open WebUI: `integrations/openwebui.md`
 - Python SDK: `python/openai_sdk.py`
@@ -120,6 +121,12 @@ Doubao compatibility test:
 
 ```text
 doubao-seed-2.0-mini
+```
+
+Doubao coding test, if enabled in your account:
+
+```text
+doubao-seed-2.0-code
 ```
 
 Use only model names visible in your Inferflow account.

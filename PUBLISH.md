@@ -14,6 +14,8 @@ Published repository:
 https://github.com/luresun1988-bot/inferflow-examples
 ```
 
+Status on 2026-06-09: repository description/topics are set, and the repo has been pinned/starred.
+
 ## One-time publish
 
 Create an empty GitHub repository, then run from this directory:
@@ -46,7 +48,7 @@ Add the public URL to:
 Set repository description:
 
 ```text
-OpenAI-compatible API examples for Inferflow: DeepSeek, Doubao, Qwen, MiMo, Cursor, Dify, Open WebUI, Python, JavaScript, LangChain, and cURL.
+OpenAI-compatible API examples for Inferflow: DeepSeek, Doubao, MiMo, Qwen where enabled, Cursor, Dify, Open WebUI, Python, JavaScript, LangChain, and cURL.
 ```
 
 Suggested GitHub topics:
